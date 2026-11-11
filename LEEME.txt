@@ -1,0 +1,8 @@
+chacosmenphisV03
+Versión independiente Memphis pop. Abrir index.html.
+Mouse: pasar sobre luminaria apaga; salir enciende; clic abre producto. En celular: toque alterna la luz, botón abre producto.
+Imágenes de producto ilustrativas generadas a partir de la propuesta visual.
+
+Navbar fija arriba en todas las páginas.
+
+Menu responsive hasta 700px en todas las páginas.
