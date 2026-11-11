@@ -1,8 +1,8 @@
-const options = document.querySelectorAll('[data-light]');
-const photos = document.querySelectorAll('#product-view img');
-options.forEach(button => button.addEventListener('click', () => {
-  const off = button.dataset.light === 'off';
-  photos[0].hidden = off;
-  photos[1].hidden = !off;
-  options.forEach(option => option.setAttribute('aria-pressed', String(option === button)));
-}));
+(()=>{
+const names={"yellow": "Amarelo com base laranja", "yellow-red": "Amarelo com base vermelha", "red": "Vermelho", "blue": "Azul"};
+const view=document.querySelector('#product-view'),photos=[...view.querySelectorAll('img')],swatches=[...document.querySelectorAll('[data-color]')],lights=[...document.querySelectorAll('[data-light]')];
+let color='yellow',light='on',request=0;
+async function render(){const ticket=++request,nextColor=color,nextLight=light,src=`assets/lamp-${nextColor}-${nextLight}.png`;const image=new Image();image.src=src;view.setAttribute('aria-busy','true');try{await image.decode();if(ticket!==request)return;photos[0].src=src;photos[0].alt=`CHACOS 01 — ${names[nextColor]}, ${nextLight==='on'?'acesa':'apagada'}`;photos[0].hidden=false;photos[1].hidden=true;view.classList.toggle('light-off',nextLight==='off');view.style.setProperty('--glow',nextColor==='blue'?'70,125,255':nextColor==='red'?'255,65,45':'255,220,100');document.querySelector('#color-name').textContent=names[nextColor];document.querySelector('#color-spec').textContent=names[nextColor];swatches.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.color===nextColor)));lights.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.light===nextLight)));document.querySelector('#image-error').hidden=true;if(!matchMedia('(prefers-reduced-motion:reduce)').matches)photos[0].animate([{opacity:.3},{opacity:1}],{duration:250});}catch(e){if(ticket===request)document.querySelector('#image-error').hidden=false;}finally{if(ticket===request)view.setAttribute('aria-busy','false');}}
+swatches.forEach(b=>b.addEventListener('click',()=>{color=b.dataset.color;render()}));lights.forEach(b=>b.addEventListener('click',()=>{light=b.dataset.light;render()}));
+const picker=document.querySelector('.color-picker'),mobile=matchMedia('(max-width:700px)');function place(){(mobile.matches?document.querySelector('.product-gallery'):document.querySelector('#color-slot')).append(picker)}place();mobile.addEventListener('change',place);
+})();

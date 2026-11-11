@@ -80,3 +80,8 @@ a:focus-visible,button:focus-visible,.inner-page a:focus-visible,.inner-page but
 /* Keep the callout next to the visible lamp, not the viewport edge. */
 @media(min-width:901px){.pop-callout{left:calc(50% + clamp(101.2px,15.18vh,149.5px) + 12px);right:auto;top:49%;width:145px;max-width:145px}}
 @media(max-width:900px){.pop-callout{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:100%;text-align:center}}
+
+/* CHACOS 01 color explorer */
+.product-copy h1{font-weight:700}.color-picker{margin:26px 0}.color-picker .eyebrow{margin-bottom:16px}.color-options{display:flex;gap:18px;flex-wrap:wrap;padding:4px}.color-swatch{width:64px;height:64px;border-radius:50%;background:var(--swatch);border:0;outline:2px solid transparent;outline-offset:5px}.color-swatch[aria-pressed="true"]{outline-color:var(--ivory)}.color-swatch:focus-visible{outline:3px solid var(--yellow);outline-offset:8px}.color-picker #color-name{font-weight:700;margin:20px 0 0}.color-help{margin:3px 0;font-size:13px!important;color:var(--soft)}.product-photo{position:relative;isolation:isolate;--glow:255,220,100}.product-photo:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse,rgba(var(--glow),.25),transparent 68%);transition:opacity .4s}.product-photo.light-off:before{opacity:0}.light-options{max-width:310px;margin:18px auto 0}.light-options button{padding:10px 18px}.gallery-caption{text-align:center}
+@media(max-width:700px){.color-picker{margin:24px 0 0}.color-swatch{width:52px;height:52px}.color-options{gap:18px}.color-picker #color-name{font-size:14px}.product-copy h1{font-size:40px}}
+@media(prefers-reduced-motion:reduce){.product-photo:before{transition:none}}
